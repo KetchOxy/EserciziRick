@@ -8,8 +8,8 @@ public class Exercise7 {
         System.out.println("inserisci un numero: ");
         n = Console.readInt();
         int[][] arrayBD = populateArray(n);
-        for (int j = 0; j < arrayBD.length; j++) {
-            for (int i = 0; i < arrayBD.length; i++) {
+        for (int i = 0; i < arrayBD.length; i++) {
+            for (int j = 0; j < arrayBD[i].length; j++) {
                 System.out.printf("%-5s", arrayBD[i][j]);
             }
             System.out.println();
