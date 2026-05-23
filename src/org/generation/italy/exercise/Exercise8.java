@@ -5,24 +5,14 @@ import java.util.Random;
 
 public class Exercise8 {
     final static Random luck = new Random();
-    public static void main(String[] args) {
+     static void main(String[] args) {
         int righe = 5, colonne = 8;
-        int[][] matriceA = new int[righe][colonne];
-        int[][] matriceB = new int[righe][colonne];
-
-        matriceA = populateArray(righe, colonne);
-        for (int i = 0; i < righe; i++) {
-            for (int j = 0; j < colonne; j++)
-                System.out.printf("%-5d", matriceA[i][j]);
-            System.out.println("");
-        }
-        System.out.println("");
-        matriceB = populateArray(righe, colonne);
-        for (int i = 0; i < righe; i++) {
-            for (int j = 0; j < colonne; j++)
-                System.out.printf("%-5d", matriceB[i][j]);
-            System.out.println("");
-        }
+        int[][] matriceA = populateArray(righe, colonne);
+        printArray(matriceA);
+        System.out.println("\n");
+        int[][] matriceB = populateArray(righe, colonne);
+        printArray(matriceB);
+        System.out.println("\n");
 
 
         int[][] C = sommaMatrici(matriceA, matriceB);
@@ -42,6 +32,13 @@ public class Exercise8 {
             }
         }
         return matrice;
+    }
+    public static void printArray(int[][] array){
+        for (int i = 0; i < array.length; i++) {
+            for (int j = 0; j < array[i].length; j++)
+                System.out.printf("%-5d", array[i][j]);
+            System.out.println("");
+        }
     }
 
     public static int[][] sommaMatrici(int[][] A, int[][] B) {
