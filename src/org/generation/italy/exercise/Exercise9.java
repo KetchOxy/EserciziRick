@@ -14,14 +14,10 @@ public class Exercise9 {
         int[][] matriceB = populateArray(righe, colonne);
         printArray(matriceB);
         System.out.println("\n");
-        int[][] C = prodottoMatrici(matriceA, matriceB);
 
+        int[][] C = prodottoMatrici(matriceA, matriceB);
         System.out.println("Risultato:");
-        for (int i = 0; i < righe; i++) {
-            for (int j = 0; j < colonne; j++)
-                System.out.printf("%-5d", C[i][j]);
-            System.out.println();
-        }
+        printArray(C);
     }
     public static int[][] populateArray(int r, int c){
         int [][] matrice = new int[r][c];
@@ -48,7 +44,7 @@ public class Exercise9 {
     public static void printArray(int[][] array){
         for (int i = 0; i < array.length; i++) {
             for (int j = 0; j < array[i].length; j++)
-                System.out.printf("%-5d", array[i][j]);
+                System.out.printf("%-5s", array[i][j]);
             System.out.println("");
         }
     }
