@@ -82,8 +82,8 @@ public class Exercise11 {
             while (!piazzata) {
                 int riga = random.nextInt(8);
                 int colonna = random.nextInt(8);
-                boolean orizzontale = random.nextBoolean();
-                piazzata = prova_a_piazzare(griglia, riga, colonna, lunghezza, orizzontale);
+                boolean orientamento = random.nextBoolean();
+                piazzata = prova_a_piazzare(griglia, riga, colonna, lunghezza, orientamento);
             }
         }
     }
@@ -101,9 +101,15 @@ public class Exercise11 {
                 System.out.print("Colonna (1-8): ");
                 int colonna = Console.readInt() - 1;
                 System.out.print("Orientamento (0=orizzontale, 1=verticale): ");
-                boolean orizzontale = Console.readInt() == 0;
+                int scelta = Console.readInt();
+                boolean orientamento;
+                if (scelta == 0) {
+                    orientamento = true;
+                } else {
+                    orientamento = false;
+                }
 
-                piazzata = prova_a_piazzare(grigliaGiocatore, riga, colonna, lunghezza, orizzontale);
+                piazzata = prova_a_piazzare(grigliaGiocatore, riga, colonna, lunghezza, orientamento);
                 if (!piazzata)
                     System.out.println("Posizione non valida, riprova.");
             }
@@ -111,20 +117,29 @@ public class Exercise11 {
     }
 
 
-    static boolean prova_a_piazzare(char[][] griglia, int riga, int colonna, int lunghezza, boolean orizzontale) {
+    static boolean prova_a_piazzare(char[][] griglia, int riga, int colonna, int lunghezza, boolean orientamento) {
 
-        if (orizzontale && colonna + lunghezza > 8) return false;
-        if (!orizzontale && riga + lunghezza > 8) return false;
+        if (orientamento == true) {
+            if (colonna + lunghezza > 8) {
+                return false;
+            }
+        }
+
+        if (orientamento == false) {
+            if (riga + lunghezza > 8) {
+                return false;
+            }
+        }
 
         for (int k = 0; k < lunghezza; k++) {
-            int r = orizzontale ? riga : riga + k;
-            int c = orizzontale ? colonna + k : colonna;
+            int r = orientamento ? riga : riga + k;
+            int c = orientamento ? colonna + k : colonna;
             if (griglia[r][c] != '?') return false;
         }
 
         for (int k = 0; k < lunghezza; k++) {
-            int r = orizzontale ? riga : riga + k;
-            int c = orizzontale ? colonna + k : colonna;
+            int r = orientamento ? riga : riga + k;
+            int c = orientamento ? colonna + k : colonna;
             griglia[r][c] = 'N';
         }
         return true;
