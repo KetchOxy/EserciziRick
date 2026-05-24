@@ -23,22 +23,23 @@ public class Exercise9 {
         int [][] matrice = new int[r][c];
         for (int i = 0; i< matrice.length; i++){
             for (int j = 0; j < matrice[i].length; j++) {
-                matrice [i] [j] = luck.nextInt(5);
+                matrice [i] [j] = luck.nextInt(5) + 1;
             }
         }
         return matrice;
     }
 
     public static int[][] prodottoMatrici(int[][] A, int[][] B) {
-        int righe = A.length;
-        int colonne = A[0].length;
+        int righe  = A.length;
+        int n      = A[0].length; // colonne di A
+        int colonne = B[0].length;
         int[][] risultato = new int[righe][colonne];
 
-        for (int i = 0; i < righe; i++) {
-            for (int j = 0; j < colonne; j++) {
-                risultato[i][j] = A[i][j] * B[i][j];
-            }
-        }
+        for (int i = 0; i < righe; i++)
+            for (int j = 0; j < colonne; j++)
+                for (int k = 0; k < n; k++)
+                    risultato[i][j] += A[i][k] * B[k][j];
+
         return risultato;
     }
     public static void printArray(int[][] array){

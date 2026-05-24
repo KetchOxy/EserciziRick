@@ -10,8 +10,6 @@ public class Exercise10 {
 
     public static void main(String[] args) {
         inizializzaGriglia();
-        System.out.println("=== GIOCO DEL TRIS ===");
-        System.out.println("Tu sei X, il computer è O");
 
         while (true) {
             stampaGriglia();
