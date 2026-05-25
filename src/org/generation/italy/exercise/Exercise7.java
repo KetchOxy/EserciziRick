@@ -1,8 +1,12 @@
 package org.generation.italy.exercise;
 
 import com.generation.library.Console;
+import java.util.Random;
 
 public class Exercise7 {
+
+    static Random random = new Random();
+
     static void main(){
         int n;
         System.out.println("inserisci un numero: ");
@@ -19,7 +23,7 @@ public class Exercise7 {
         int[][] array = new int[n][n];
         for (int i = 0; i< n; i++){
             for (int j = 0; j < n; j++){
-                array[i][j] =  i == j ? 1 : 0;
+                array[i][j] =  i == j ? random.nextInt(1000) : 0;
             }
         }
         return array;
